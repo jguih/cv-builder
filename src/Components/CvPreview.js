@@ -13,6 +13,9 @@ class CvPreview extends React.Component {
             " | " + this.props.city + ", " + this.props.state}
           </Card.Text>
           <hr></hr>
+          <Card.Title>Work Experience</Card.Title>
+          <hr></hr>
+          <Card.Title>Education</Card.Title>
         </Card.Body>
       </Card>
     );

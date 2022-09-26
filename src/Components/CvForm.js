@@ -1,11 +1,8 @@
 import React from "react";
-import { Form, Row, Col, FormGroup, FormLabel, FormControl, Card } from 'react-bootstrap';
+import { Form, Row, Col, FormGroup, FormLabel, FormControl, Card, Button } from 'react-bootstrap';
+import CvFormWorkExp from "./CvFormWorkExp";
 
 class CvForm extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <Card border="dark">
@@ -13,7 +10,7 @@ class CvForm extends React.Component {
         <Card.Body>
           <Form>
             <Row className="mb-3">
-              <Col>
+              <Col sm="6">
                 <FormGroup>
                   <FormLabel>First Name</FormLabel>
                   <FormControl
@@ -22,7 +19,7 @@ class CvForm extends React.Component {
                   />
                 </FormGroup>
               </Col>
-              <Col>
+              <Col sm="6">
                 <FormGroup>
                   <FormLabel>Last Name</FormLabel>
                   <FormControl
@@ -33,17 +30,16 @@ class CvForm extends React.Component {
               </Col>
             </Row>
             <Row className="mb-3">
-              <Col>
+              <Col sm="6">
                 <FormGroup>
                   <FormLabel>Email</FormLabel>
                   <FormControl
                     type="email"
-                    placeholder="example@email.com"
                     onChange={this.props.onChangeEmail}
                   />
                 </FormGroup>
               </Col>
-              <Col>
+              <Col sm="6">
                 <FormGroup>
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl
@@ -53,26 +49,40 @@ class CvForm extends React.Component {
                 </FormGroup>
               </Col>
             </Row>
-            <Row className="mb-3">
-              <Col>
+            <Row className="mb-4">
+              <Col sm="6">
                 <FormGroup>
                   <FormLabel>City</FormLabel>
-                  <FormControl 
+                  <FormControl
                     type="text"
                     onChange={this.props.onChangeCity}
                   />
                 </FormGroup>
               </Col>
-              <Col>
+              <Col sm="6">
                 <FormGroup>
                   <FormLabel>State</FormLabel>
-                  <FormControl 
+                  <FormControl
                     type="text"
                     onChange={this.props.onChangeState}
                   />
                 </FormGroup>
               </Col>
             </Row>
+            <hr></hr>
+            <Row className="justify-content-start mb-3">
+              <Col sm="auto"><h5>Work Experience</h5></Col>
+              <Col sm="auto">
+                <Button variant="dark" onClick={this.props.addWorkExp}>Add</Button>
+              </Col>
+            </Row>
+            {this.props.workExp.map((workExp, index) =>
+              <CvFormWorkExp 
+                key={index} 
+                workExp={this.props.workExp} 
+                index={index}
+                removeWorkExp={this.props.removeWorkExp}
+              />)}
           </Form>
         </Card.Body>
       </Card>
