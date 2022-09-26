@@ -1,13 +1,21 @@
 import './App.css';
 import React from 'react';
-import { Form, FormLabel, FormGroup, FormControl, Row, Col, Container, Alert } from 'react-bootstrap';
+import { Row, Col, Container, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CvForm from './Components/CvForm';
+import CvPreview from './Components/CvPreview';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      name: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      city: "",
+      state: "",
     };
   }
 
@@ -15,29 +23,25 @@ class App extends React.Component {
     return (
       <Container fluid className="cv-container">
         <Row>
-          <Col lg="6" className="cv-form">
-            <Form>
-              <Row>
-                <Col>
-                  <FormGroup className='mb-3'>
-                    <FormLabel>First Name</FormLabel>
-                    <FormControl type='text' placeholder='Your First Name'></FormControl>
-                  </FormGroup>
-                </Col>
-                <Col> 
-                  <FormGroup className='mb-3'>
-                    <FormLabel>Last Name</FormLabel>
-                    <FormControl type='text' placeholder='Your Last Name'></FormControl>
-                  </FormGroup>
-                </Col>
-              </Row>
-            </Form>
+          <Col lg="6" className="cv-form mb-3">
+            <CvForm
+              onChangeFirstName={(event) => this.setState({ firstName: event.target.value })}
+              onChangeLastName={(event) => this.setState({ lastName: event.target.value })}
+              onChangeEmail={(event) => this.setState({ email: event.target.value })}
+              onChangePhoneNumber={(event) => this.setState({ phoneNumber: event.target.value })}
+              onChangeCity={(event) => this.setState({ city: event.target.value })}
+              onChangeState={(event) => this.setState({ state: event.target.value })}
+            />
           </Col>
           <Col lg="6" className="cv-preview">
-            <Alert variant='success'>
-              Your CV
-              <hr></hr>
-            </Alert>
+            <CvPreview
+              firstName={this.state.firstName}
+              lastName={this.state.lastName}
+              email={this.state.email}
+              phoneNumber={this.state.phoneNumber}
+              city={this.state.city}
+              state={this.state.state}
+            />
           </Col>
         </Row>
       </Container>
