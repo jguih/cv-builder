@@ -31,7 +31,12 @@ class CvFormWorkExp extends React.Component {
           </Row>
           <Row className="justify-content-center">
             <Col sm="auto">
-              <Button variant="danger" onClick={() => this.props.removeWorkExp(this.props.index)}>Remove</Button>
+              <Button 
+                variant="danger" 
+                onClick={() => this.props.removeWorkExp(this.props.workExp)}
+              >
+                Remove
+              </Button>
             </Col>
           </Row>
         </Card.Body>

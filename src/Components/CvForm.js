@@ -70,19 +70,27 @@ class CvForm extends React.Component {
               </Col>
             </Row>
             <hr></hr>
-            <Row className="justify-content-start mb-3">
-              <Col sm="auto"><h5>Work Experience</h5></Col>
-              <Col sm="auto">
-                <Button variant="dark" onClick={this.props.addWorkExp}>Add</Button>
+            <Row> {/* Work Experience section */}
+              <Col>
+                <Row className="justify-content-start mb-3">
+                  <Col sm="auto"><h5>Work Experience</h5></Col>
+                  <Col sm="auto">
+                    <Button variant="dark" onClick={this.props.addWorkExp}>Add</Button>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    {this.props.workExp.map((currentWorkExp, index) =>
+                      <CvFormWorkExp
+                        key={index}
+                        index={index}
+                        workExp={currentWorkExp}
+                        removeWorkExp={this.props.removeWorkExp}
+                      />)}
+                  </Col>
+                </Row>
               </Col>
             </Row>
-            {this.props.workExp.map((workExp, index) =>
-              <CvFormWorkExp 
-                key={index} 
-                workExp={this.props.workExp} 
-                index={index}
-                removeWorkExp={this.props.removeWorkExp}
-              />)}
           </Form>
         </Card.Body>
       </Card>

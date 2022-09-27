@@ -16,7 +16,7 @@ class App extends React.Component {
       phoneNumber: "",
       city: "",
       state: "",
-      // Work Experience states array
+      // Work Experiences
       workExp: [{
         position: "",
         startDate: "",
@@ -24,7 +24,8 @@ class App extends React.Component {
         company: "",
         location: "",
       }],
-      educationProps: [{
+      // Education
+      education: [{
 
       }],
     };
@@ -48,9 +49,9 @@ class App extends React.Component {
     });
   }
 
-  // Remove a work experience item from array
-  removeWorkExp(index) {
-    const workExp = this.state.workExp.filter((item) => item !== this.state.workExp[index]);
+  // Remove a work experience
+  removeWorkExp(rWorkExp) {
+    const workExp = this.state.workExp.filter((item) => item !== rWorkExp);
     this.setState({
       workExp: workExp,
     })
@@ -82,6 +83,7 @@ class App extends React.Component {
               phoneNumber={this.state.phoneNumber}
               city={this.state.city}
               state={this.state.state}
+              workExp={this.state.workExp}
             />
           </Col>
         </Row>
