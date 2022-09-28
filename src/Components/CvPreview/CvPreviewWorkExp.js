@@ -5,6 +5,16 @@ class CvPreviewWorkExp extends React.Component {
   render() {
     const { currentWorkExp } = this.props;
 
+    const showDate = () => {
+      if(currentWorkExp['startDate'] && !currentWorkExp['endDate']) {
+        return currentWorkExp['startDate'];
+      } else if (!currentWorkExp['startDate'] && currentWorkExp['endDate']) {
+        return currentWorkExp['endDate'];
+      } else if (currentWorkExp['startDate'] && currentWorkExp['endDate']) {
+        return currentWorkExp['startDate'] + " - " + currentWorkExp['endDate'];
+      } else { return "start date - end date" }
+    };
+
     return (
       <div className="mb-3">
         <Row className="justify-content-between">
@@ -12,9 +22,7 @@ class CvPreviewWorkExp extends React.Component {
             <b>{currentWorkExp['position'] || "Position"}</b>
           </Col>
           <Col sm="auto">
-            {(currentWorkExp['startDate'] || currentWorkExp['endDate'] ? 
-              (currentWorkExp['startDate'] + " - " + currentWorkExp['endDate']) :
-              "start date - end date")}
+            {showDate()}
           </Col>
         </Row>
         <Row className="justify-content-between">
