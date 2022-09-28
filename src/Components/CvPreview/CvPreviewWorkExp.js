@@ -12,7 +12,9 @@ class CvPreviewWorkExp extends React.Component {
             <b>{currentWorkExp['position'] || "Position"}</b>
           </Col>
           <Col sm="auto">
-            {(currentWorkExp['startDate'] || "start date") + " - " + (currentWorkExp['endDate'] || "end date")}
+            {(currentWorkExp['startDate'] || currentWorkExp['endDate'] ? 
+              (currentWorkExp['startDate'] + " - " + currentWorkExp['endDate']) :
+              "start date - end date")}
           </Col>
         </Row>
         <Row className="justify-content-between">

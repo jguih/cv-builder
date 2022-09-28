@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Row, Col, FormGroup, FormLabel, FormControl, Card, Button } from 'react-bootstrap';
+import CvFormEducation from "./CvFormEducation";
 import CvFormWorkExp from "./CvFormWorkExp";
 
 class CvForm extends React.Component {
@@ -77,8 +78,8 @@ class CvForm extends React.Component {
                 <Row className="justify-content-start align-items-center mb-3">
                   <Col sm="auto"><h5>Work Experience</h5></Col>
                   <Col sm="auto">
-                    <Button 
-                      variant="dark" 
+                    <Button
+                      variant="dark"
                       onClick={() => this.props.addWorkExp(-1, null)} >
                       Add
                     </Button>
@@ -88,14 +89,43 @@ class CvForm extends React.Component {
                   <Col>
                     { /* Maps the workExp array and creates a component for each */
                       this.props.workExp.map((currentWorkExp, index) =>
-                      <CvFormWorkExp
-                        key={index}
-                        index={index}
-                        currentWorkExp={currentWorkExp}
-                        removeWorkExp={this.props.removeWorkExp}
-                        addWorkExp={this.props.addWorkExp}
-                        />
-                    )}
+                        <CvFormWorkExp
+                          key={index}
+                          index={index}
+                          currentWorkExp={currentWorkExp}
+                          removeWorkExp={this.props.removeWorkExp}
+                          addWorkExp={this.props.addWorkExp}
+                        />)
+                    }
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+            <hr></hr>
+            <Row> {/* Education section */}
+              <Col>
+                <Row className="justify-content-start align-items-center mb-3">
+                  <Col sm="auto"><h5>Education</h5></Col>
+                  <Col sm="auto">
+                    <Button
+                      variant="dark"
+                      onClick={() => this.props.addEducation(-1, null)}>
+                      Add
+                    </Button>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    { /* Maps the education array and creates a component for each */
+                      this.props.education.map((currentEducation, index) =>
+                        <CvFormEducation
+                          key={index}
+                          index={index}
+                          currentEducation={currentEducation}
+                          addEducation={this.props.addEducation}
+                          removeEducation={this.props.removeEducation}
+                        />)
+                    }
                   </Col>
                 </Row>
               </Col>

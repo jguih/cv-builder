@@ -2,9 +2,10 @@ import './App.css';
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CvForm from './Components/CvForm';
-import CvPreview from './Components/CvPreview';
+import CvForm from './Components/CvForm/CvForm';
+import CvPreview from './Components/CvPreview/CvPreview';
 import WorkExp from './WorkExp';
+import Education from './Education';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,18 +18,18 @@ class App extends React.Component {
       phoneNumber: "",
       city: "",
       state: "",
-      // Work Experiences
       workExp: [
         new WorkExp(),
       ],
-      // Education
       education: [
-
+        new Education(),
       ],
     };
     this.addWorkExp = this.addWorkExp.bind(this);
     this.removeWorkExp = this.removeWorkExp.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.addEducation = this.addEducation.bind(this);
+    this.removeEducation = this.removeEducation.bind(this);
   }
 
   // Add or update a work experience
@@ -55,6 +56,30 @@ class App extends React.Component {
     })
   }
 
+  // Adds or updates an education
+  addEducation(index, newEducation) {
+    const education = this.state.education;
+
+    if (index < 0) {
+      education.push(new Education())
+    } else if (newEducation instanceof Education) {
+      education.slice(index, 1, newEducation);
+    }
+
+    this.setState({
+      education: education
+    });
+  }
+
+  // Removes an education by index
+  removeEducation(index) {
+    const education = this.state.education;
+    education.splice(index, 1);
+    this.setState({
+      education: education
+    });
+  }
+
   // Update states based on user input in CvForm component
   handleOnChange(event, property) {
     this.setState({
@@ -72,6 +97,8 @@ class App extends React.Component {
               addWorkExp={this.addWorkExp}
               removeWorkExp={this.removeWorkExp}
               workExp={this.state.workExp}
+              addEducation={this.addEducation}
+              removeEducation={this.removeEducation}
               education={this.state.education}
             />
           </Col>
@@ -88,7 +115,6 @@ class App extends React.Component {
           </Col>
         </Row>
       </Container>
-
     );
   }
 }

@@ -1,30 +1,28 @@
 import React from "react";
-import { Row, Col, FormGroup, FormLabel, Card, FormControl, Button } from 'react-bootstrap';
+import { Card, Row, Col, FormGroup, FormControl, FormLabel, Button } from "react-bootstrap";
 
-class CvFormWorkExp extends React.Component {
+class CvFormEducation extends React.Component {
   render() {
     const index = this.props.index;
-    const currentWorkExp = this.props.currentWorkExp;
+    const currentEducation = this.props.currentEducation;
 
-    // Updates the current work exp attributes and updates the main app state
     const handleOnChange = (event, property) => {
-      currentWorkExp[property] = event.target.value;
-      // Updates the work exp array state in App component
-      this.props.addWorkExp(index, currentWorkExp);
+      currentEducation[property] = event.target.value;
+      this.props.addEducation(index, currentEducation)
     }
 
     return (
-      <Card className="mb-3" sm="auto">
-        <Card.Header>Work Experience {this.props.index + 1}</Card.Header>
+      <Card className="mb-3">
+        <Card.Header>Education</Card.Header>
         <Card.Body>
           <Row className="mb-3">
             <Col>
               <FormGroup>
-                <FormLabel>Position</FormLabel>
+                <FormLabel>School name</FormLabel>
                 <FormControl
                   type="text"
-                  value={currentWorkExp.position || ""}
-                  onChange={(e) => handleOnChange(e, "position")}
+                  value={currentEducation.schoolName || ""}
+                  onChange={(e) => handleOnChange(e, "schoolName")}
                 />
               </FormGroup>
             </Col>
@@ -32,42 +30,42 @@ class CvFormWorkExp extends React.Component {
           <Row className="mb-3">
             <Col sm="6">
               <FormGroup>
-                <FormLabel>Start Date</FormLabel>
+                <FormLabel>Start date</FormLabel>
                 <FormControl
                   type="text"
-                  value={currentWorkExp.startDate || ""}
+                  value={currentEducation.startDate || ""}
                   onChange={(e) => handleOnChange(e, "startDate")}
                 />
               </FormGroup>
             </Col>
-            <Col sm="6">
+            <Col>
               <FormGroup>
-                <FormLabel>End Date</FormLabel>
+                <FormLabel>End date</FormLabel>
                 <FormControl
                   type="text"
-                  value={currentWorkExp.endDate || ""}
+                  value={currentEducation.endDate || ""}
                   onChange={(e) => handleOnChange(e, "endDate")}
                 />
               </FormGroup>
             </Col>
           </Row>
           <Row className="mb-3">
-            <Col>
+            <Col sm="6">
               <FormGroup>
-                <FormLabel>Company</FormLabel>
-                <FormControl 
+                <FormLabel>Diploma</FormLabel>
+                <FormControl
                   type="text"
-                  value={currentWorkExp.company || ""}
-                  onChange={(e) => handleOnChange(e, "company")}
+                  value={currentEducation.diploma || ""}
+                  onChange={(e) => handleOnChange(e, "diploma")}
                 />
               </FormGroup>
             </Col>
             <Col>
               <FormGroup>
                 <FormLabel>Location</FormLabel>
-                <FormControl 
+                <FormControl
                   type="text"
-                  value={currentWorkExp.location || ""}
+                  value={currentEducation.location || ""}
                   onChange={(e) => handleOnChange(e, "location")}
                 />
               </FormGroup>
@@ -76,9 +74,8 @@ class CvFormWorkExp extends React.Component {
           <Row className="justify-content-center">
             <Col sm="auto">
               <Button
-                variant="danger"
-                onClick={() => this.props.removeWorkExp(this.props.index)}
-              >
+                variant="danger" 
+                onClick={() => this.props.removeEducation(index)}>
                 Remove
               </Button>
             </Col>
@@ -89,4 +86,4 @@ class CvFormWorkExp extends React.Component {
   }
 }
 
-export default CvFormWorkExp;
+export default CvFormEducation;
