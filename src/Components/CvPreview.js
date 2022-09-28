@@ -1,37 +1,45 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import CvPreviewWorkExp from "./CvPreviewWorkExp";
+import './CvPreview.css'
 
 class CvPreview extends React.Component {
   render() {
+    const { firstName, lastName, email, phoneNumber, city, state, workExp } = this.props;
+
     return (
       <Card border="dark">
         <Card.Header>CV Preview</Card.Header>
         <Card.Body>
           {/* Persons name */}
-          <Card.Title style={{ fontSize: 40 + 'px' }}>
-            {(this.props.firstName || this.props.lastName) === "" ? 
-              "Your Name" : this.props.firstName + " " + this.props.lastName}
+          <Card.Title className="name">
+            {(firstName || lastName) === "" ? "Your Name" : firstName + " " + lastName}
           </Card.Title>
           {/* Info section */}
           <Card.Text>
-            {(this.props.email === "" ? "email" : this.props.email)
-              + " | " + (this.props.phoneNumber === "" ? "phone" : this.props.phoneNumber) 
-              + " | " + (this.props.city === "" ? "city" : this.props.city) 
-              + ", " + (this.props.state === "" ? "state" : this.props.state)}
+            { (email || "email") + " | " + 
+              (phoneNumber || "phone number") + " | " + 
+              (city || "city") + ", " + 
+              (state || "state")}
           </Card.Text>
-          <hr></hr>
-          <h5>Work Experience</h5>
+          <h5 className="title">Work Experience</h5>
+          <Hr></Hr>
           {/* Creates a CvPreviewWorkExp component for every work experience object */}
-          {this.props.workExp.map((currentWorkExp, index) => (
-            <CvPreviewWorkExp workExp={currentWorkExp} key={index}></CvPreviewWorkExp>
+          {workExp.map((currentWorkExp, index) => (
+            <CvPreviewWorkExp currentWorkExp={currentWorkExp} key={index}></CvPreviewWorkExp>
           ))}
-          <hr></hr>
           <h5>Education</h5>
+          <Hr></Hr>
         </Card.Body>
       </Card>
     );
   }
+}
+
+function Hr() {
+  return (
+    <hr className="mt-0 mb-0"></hr>
+  );
 }
 
 export default CvPreview;

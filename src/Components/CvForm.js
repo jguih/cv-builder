@@ -4,6 +4,8 @@ import CvFormWorkExp from "./CvFormWorkExp";
 
 class CvForm extends React.Component {
   render() {
+    const handleOnChange = this.props.handleOnChange;
+
     return (
       <Card border="dark">
         <Card.Header>Your info</Card.Header>
@@ -14,8 +16,8 @@ class CvForm extends React.Component {
                 <FormGroup>
                   <FormLabel>First Name</FormLabel>
                   <FormControl
-                    type='text'
-                    onChange={this.props.onChangeFirstName}
+                    type="text"
+                    onChange={(event) => handleOnChange(event, "firstName")}
                   />
                 </FormGroup>
               </Col>
@@ -23,8 +25,8 @@ class CvForm extends React.Component {
                 <FormGroup>
                   <FormLabel>Last Name</FormLabel>
                   <FormControl
-                    type='text'
-                    onChange={this.props.onChangeLastName}
+                    type="text"
+                    onChange={(event) => handleOnChange(event, "lastName")}
                   />
                 </FormGroup>
               </Col>
@@ -35,7 +37,7 @@ class CvForm extends React.Component {
                   <FormLabel>Email</FormLabel>
                   <FormControl
                     type="email"
-                    onChange={this.props.onChangeEmail}
+                    onChange={(event) => handleOnChange(event, "email")}
                   />
                 </FormGroup>
               </Col>
@@ -44,7 +46,7 @@ class CvForm extends React.Component {
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl
                     type="phone"
-                    onChange={this.props.onChangePhoneNumber}
+                    onChange={(event) => handleOnChange(event, "phoneNumber")}
                   />
                 </FormGroup>
               </Col>
@@ -55,7 +57,7 @@ class CvForm extends React.Component {
                   <FormLabel>City</FormLabel>
                   <FormControl
                     type="text"
-                    onChange={this.props.onChangeCity}
+                    onChange={(event) => handleOnChange(event, "city")}
                   />
                 </FormGroup>
               </Col>
@@ -64,7 +66,7 @@ class CvForm extends React.Component {
                   <FormLabel>State</FormLabel>
                   <FormControl
                     type="text"
-                    onChange={this.props.onChangeState}
+                    onChange={(event) => handleOnChange(event, "state")}
                   />
                 </FormGroup>
               </Col>
@@ -72,21 +74,28 @@ class CvForm extends React.Component {
             <hr></hr>
             <Row> {/* Work Experience section */}
               <Col>
-                <Row className="justify-content-start mb-3">
+                <Row className="justify-content-start align-items-center mb-3">
                   <Col sm="auto"><h5>Work Experience</h5></Col>
                   <Col sm="auto">
-                    <Button variant="dark" onClick={this.props.addWorkExp}>Add</Button>
+                    <Button 
+                      variant="dark" 
+                      onClick={() => this.props.addWorkExp(-1, null)} >
+                      Add
+                    </Button>
                   </Col>
                 </Row>
                 <Row>
                   <Col>
-                    {this.props.workExp.map((currentWorkExp, index) =>
+                    { /* Maps the workExp array and creates a component for each */
+                      this.props.workExp.map((currentWorkExp, index) =>
                       <CvFormWorkExp
                         key={index}
                         index={index}
-                        workExp={currentWorkExp}
+                        currentWorkExp={currentWorkExp}
                         removeWorkExp={this.props.removeWorkExp}
-                      />)}
+                        addWorkExp={this.props.addWorkExp}
+                        />
+                    )}
                   </Col>
                 </Row>
               </Col>

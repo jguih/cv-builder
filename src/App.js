@@ -4,6 +4,7 @@ import { Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CvForm from './Components/CvForm';
 import CvPreview from './Components/CvPreview';
+import WorkExp from './WorkExp';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,44 +18,48 @@ class App extends React.Component {
       city: "",
       state: "",
       // Work Experiences
-      workExp: [{
-        position: "",
-        startDate: "",
-        endDate: "",
-        company: "",
-        location: "",
-      }],
+      workExp: [
+        new WorkExp(),
+      ],
       // Education
-      education: [{
+      education: [
 
-      }],
+      ],
     };
-
     this.addWorkExp = this.addWorkExp.bind(this);
     this.removeWorkExp = this.removeWorkExp.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
-  // Add a new workExp component
-  addWorkExp() {
+  // Add or update a work experience
+  addWorkExp(index, newWorkExp) {
     const workExp = this.state.workExp;
-    workExp.push({
-      position: "",
-      startDate: "",
-      endDate: "",
-      company: "",
-      location: "",
-    });
+
+    if (index < 0) {
+      workExp.push(new WorkExp());
+    } else if (newWorkExp instanceof WorkExp) {
+      workExp.slice(index, 1, newWorkExp);
+    }
+
     this.setState({
       workExp: workExp
     });
   }
 
-  // Remove a work experience
-  removeWorkExp(rWorkExp) {
-    const workExp = this.state.workExp.filter((item) => item !== rWorkExp);
+  // Remove a work experience by index
+  removeWorkExp(index) {
+    const workExp = this.state.workExp;
+    workExp.splice(index, 1);
     this.setState({
       workExp: workExp,
     })
+  }
+
+  // Update states based on user input in CvForm component
+  handleOnChange(event, property) {
+    this.setState({
+      [property]: event.target.value,
+    });
   }
 
   render() {
@@ -63,16 +68,11 @@ class App extends React.Component {
         <Row>
           <Col lg="6" className="cv-form mb-3">
             <CvForm
-              onChangeFirstName={(event) => this.setState({ firstName: event.target.value })}
-              onChangeLastName={(event) => this.setState({ lastName: event.target.value })}
-              onChangeEmail={(event) => this.setState({ email: event.target.value })}
-              onChangePhoneNumber={(event) => this.setState({ phoneNumber: event.target.value })}
-              onChangeCity={(event) => this.setState({ city: event.target.value })}
-              onChangeState={(event) => this.setState({ state: event.target.value })}
+              handleOnChange={this.handleOnChange}
               addWorkExp={this.addWorkExp}
               removeWorkExp={this.removeWorkExp}
-              workExp = {this.state.workExp}
-              education = {this.state.education}
+              workExp={this.state.workExp}
+              education={this.state.education}
             />
           </Col>
           <Col lg="6" className="cv-preview">
