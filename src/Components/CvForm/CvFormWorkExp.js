@@ -52,7 +52,7 @@ class CvFormWorkExp extends React.Component {
             </Col>
           </Row>
           <Row className="mb-3">
-            <Col>
+            <Col sm="6">
               <FormGroup>
                 <FormLabel>Company</FormLabel>
                 <FormControl 
@@ -62,7 +62,7 @@ class CvFormWorkExp extends React.Component {
                 />
               </FormGroup>
             </Col>
-            <Col>
+            <Col sm="6">
               <FormGroup>
                 <FormLabel>Location</FormLabel>
                 <FormControl 
