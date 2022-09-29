@@ -8,7 +8,7 @@ class CvForm extends React.Component {
     const handleOnChange = this.props.handleOnChange;
 
     return (
-      <Card border="dark">
+      <Card border="dark" className="shadow">
         <Card.Header>Your info</Card.Header>
         <Card.Body>
           <Form>

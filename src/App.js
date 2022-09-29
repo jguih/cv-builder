@@ -103,16 +103,18 @@ class App extends React.Component {
             />
           </Col>
           <Col lg="7" className="cv-preview">
-            <CvPreview
-              firstName={this.state.firstName}
-              lastName={this.state.lastName}
-              email={this.state.email}
-              phoneNumber={this.state.phoneNumber}
-              city={this.state.city}
-              state={this.state.state}
-              workExp={this.state.workExp}
-              education={this.state.education}
-            />
+            <div className="sticky-top" >
+              <CvPreview
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                email={this.state.email}
+                phoneNumber={this.state.phoneNumber}
+                city={this.state.city}
+                state={this.state.state}
+                workExp={this.state.workExp}
+                education={this.state.education}
+              />
+            </div>
           </Col>
         </Row>
       </Container>

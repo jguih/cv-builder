@@ -9,7 +9,7 @@ class CvPreview extends React.Component {
     const { firstName, lastName, email, phoneNumber, city, state, workExp, education } = this.props;
 
     return (
-      <Card border="dark">
+      <Card border="dark" className="shadow">
         <Card.Header>CV Preview</Card.Header>
         <Card.Body>
           {/* Persons name */}
