@@ -82,8 +82,8 @@ class CvForm extends React.Component {
             <Row> {/* Work Experience section */}
               <Col>
                 <Row className="justify-content-start align-items-center mb-3">
-                  <Col sm="auto"><h5>Work Experience</h5></Col>
-                  <Col sm="auto">
+                  <Col xs="auto"><h5>Work Experience</h5></Col>
+                  <Col xs="auto">
                     <Button
                       variant="dark"
                       onClick={() => this.props.addWorkExp(-1, null)} >
@@ -111,8 +111,8 @@ class CvForm extends React.Component {
             <Row> {/* Education section */}
               <Col>
                 <Row className="justify-content-start align-items-center mb-3">
-                  <Col sm="auto"><h5>Education</h5></Col>
-                  <Col sm="auto">
+                  <Col xs="auto"><h5>Education</h5></Col>
+                  <Col xs="auto">
                     <Button
                       variant="dark"
                       onClick={() => this.props.addEducation(-1, null)}>

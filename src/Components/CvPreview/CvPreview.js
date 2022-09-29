@@ -13,10 +13,10 @@ class CvPreview extends React.Component {
       <Card border="dark" className="shadow">
         <Card.Header>
           <Row className="justify-content-between align-items-center">
-            <Col sm="auto">
+            <Col xs="auto">
               CV Preview
             </Col>
-            <Col sm="auto">
+            <Col xs="auto">
               <ReactToPrint
                 trigger={() => {
                   return <Button>Export PDF</Button>
