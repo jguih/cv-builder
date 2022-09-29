@@ -18,18 +18,18 @@ class CvPreviewEducation extends React.Component {
     return (
       <div className="mb-3">
         <Row className="justify-content-between">
-          <Col sm="auto">
+          <Col xs="auto">
             <b>{currentEducation.schoolName || "School name"}</b>
           </Col>
-          <Col sm="auto">
+          <Col xs="auto">
             {showDate()}
           </Col>
         </Row>
         <Row className="justify-content-between">
-          <Col sm="auto">
+          <Col xs="auto">
             {currentEducation.diploma || "Diploma"}
           </Col>
-          <Col sm="auto">
+          <Col xs="auto">
             {currentEducation.location || "location"}
           </Col>
         </Row>

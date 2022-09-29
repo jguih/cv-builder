@@ -18,7 +18,7 @@ class CvFormEducation extends React.Component {
           <Row className="mb-3">
             <Col>
               <FormGroup>
-                <FormLabel>School name</FormLabel>
+                <FormLabel>School</FormLabel>
                 <FormControl
                   type="text"
                   value={currentEducation.schoolName || ""}
@@ -30,7 +30,7 @@ class CvFormEducation extends React.Component {
           <Row className="mb-3">
             <Col sm="6">
               <FormGroup>
-                <FormLabel>Start date</FormLabel>
+                <FormLabel>From</FormLabel>
                 <FormControl
                   type="text"
                   value={currentEducation.startDate || ""}
@@ -40,7 +40,7 @@ class CvFormEducation extends React.Component {
             </Col>
             <Col>
               <FormGroup>
-                <FormLabel>End date</FormLabel>
+                <FormLabel>To</FormLabel>
                 <FormControl
                   type="text"
                   value={currentEducation.endDate || ""}

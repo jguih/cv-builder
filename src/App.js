@@ -1,6 +1,6 @@
 import './style/App.css';
 import React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CvForm from './Components/CvForm/CvForm';
 import CvPreview from './Components/CvPreview/CvPreview';
@@ -25,6 +25,7 @@ class App extends React.Component {
         new Education(),
       ],
     };
+
     this.addWorkExp = this.addWorkExp.bind(this);
     this.removeWorkExp = this.removeWorkExp.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -119,8 +120,8 @@ class App extends React.Component {
       phoneNumber: "",
       city: "",
       state: "",
-      workExp: [ new WorkExp() ],
-      education: [ new Education() ],
+      workExp: [new WorkExp()],
+      education: [new Education()],
     });
   }
 
@@ -148,10 +149,10 @@ class App extends React.Component {
               resetState={this.resetState}
             />
           </Col>
-          <Col lg="7" className="cv-preview">
+          <Col lg="7" className="cv-preview mb-3">
             <div className="sticky-top" >
               <CvPreview
-                info={{ city: this.state.city, }}
+                info={info}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
                 email={this.state.email}

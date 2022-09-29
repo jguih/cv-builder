@@ -20,7 +20,7 @@ class CvFormWorkExp extends React.Component {
           <Row className="mb-3">
             <Col>
               <FormGroup>
-                <FormLabel>Position</FormLabel>
+                <FormLabel>Role</FormLabel>
                 <FormControl
                   type="text"
                   value={currentWorkExp.position || ""}
@@ -32,7 +32,7 @@ class CvFormWorkExp extends React.Component {
           <Row className="mb-3">
             <Col sm="6">
               <FormGroup>
-                <FormLabel>Start Date</FormLabel>
+                <FormLabel>From</FormLabel>
                 <FormControl
                   type="text"
                   value={currentWorkExp.startDate || ""}
@@ -42,7 +42,7 @@ class CvFormWorkExp extends React.Component {
             </Col>
             <Col sm="6">
               <FormGroup>
-                <FormLabel>End Date</FormLabel>
+                <FormLabel>To</FormLabel>
                 <FormControl
                   type="text"
                   value={currentWorkExp.endDate || ""}

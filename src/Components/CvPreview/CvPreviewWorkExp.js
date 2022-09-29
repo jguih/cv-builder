@@ -18,18 +18,18 @@ class CvPreviewWorkExp extends React.Component {
     return (
       <div className="mb-3">
         <Row className="justify-content-between">
-          <Col sm="auto">
+          <Col xs="auto">
             <b>{currentWorkExp['position'] || "Position"}</b>
           </Col>
-          <Col sm="auto">
+          <Col xs="auto">
             {showDate()}
           </Col>
         </Row>
         <Row className="justify-content-between">
-          <Col sm="auto">
+          <Col xs="auto">
             {currentWorkExp['company'] || "Company"}
           </Col>
-          <Col sm="auto">
+          <Col xs="auto">
             {currentWorkExp['location'] || "location"}
           </Col>
         </Row>
