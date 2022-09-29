@@ -13,7 +13,7 @@ class CvFormEducation extends React.Component {
 
     return (
       <Card className="mb-3">
-        <Card.Header>Education</Card.Header>
+        <Card.Header>Education {index + 1}</Card.Header>
         <Card.Body>
           <Row className="mb-3">
             <Col>

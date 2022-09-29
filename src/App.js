@@ -1,4 +1,4 @@
-import './App.css';
+import './style/App.css';
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -89,9 +89,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container fluid className="cv-container">
+      <Container className="cv-container">
         <Row>
-          <Col lg="6" className="cv-form mb-3">
+          <Col lg="5" className="cv-form mb-3">
             <CvForm
               handleOnChange={this.handleOnChange}
               addWorkExp={this.addWorkExp}
@@ -102,7 +102,7 @@ class App extends React.Component {
               education={this.state.education}
             />
           </Col>
-          <Col lg="6" className="cv-preview">
+          <Col lg="7" className="cv-preview">
             <CvPreview
               firstName={this.state.firstName}
               lastName={this.state.lastName}
@@ -111,6 +111,7 @@ class App extends React.Component {
               city={this.state.city}
               state={this.state.state}
               workExp={this.state.workExp}
+              education={this.state.education}
             />
           </Col>
         </Row>
