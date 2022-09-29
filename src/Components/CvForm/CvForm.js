@@ -5,7 +5,7 @@ import CvFormWorkExp from "./CvFormWorkExp";
 
 class CvForm extends React.Component {
   render() {
-    const handleOnChange = this.props.handleOnChange;
+    const { handleOnChange, info } = this.props;
 
     return (
       <Card border="dark" className="shadow">
@@ -18,6 +18,7 @@ class CvForm extends React.Component {
                   <FormLabel>First Name</FormLabel>
                   <FormControl
                     type="text"
+                    value={info.firstName || ""}
                     onChange={(event) => handleOnChange(event, "firstName")}
                   />
                 </FormGroup>
@@ -27,6 +28,7 @@ class CvForm extends React.Component {
                   <FormLabel>Last Name</FormLabel>
                   <FormControl
                     type="text"
+                    value={info.lastName || ""}
                     onChange={(event) => handleOnChange(event, "lastName")}
                   />
                 </FormGroup>
@@ -38,6 +40,7 @@ class CvForm extends React.Component {
                   <FormLabel>Email</FormLabel>
                   <FormControl
                     type="email"
+                    value={info.email || ""}
                     onChange={(event) => handleOnChange(event, "email")}
                   />
                 </FormGroup>
@@ -47,6 +50,7 @@ class CvForm extends React.Component {
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl
                     type="phone"
+                    value={info.phoneNumber || ""}
                     onChange={(event) => handleOnChange(event, "phoneNumber")}
                   />
                 </FormGroup>
@@ -58,6 +62,7 @@ class CvForm extends React.Component {
                   <FormLabel>City</FormLabel>
                   <FormControl
                     type="text"
+                    value={info.city || ""}
                     onChange={(event) => handleOnChange(event, "city")}
                   />
                 </FormGroup>
@@ -67,6 +72,7 @@ class CvForm extends React.Component {
                   <FormLabel>State</FormLabel>
                   <FormControl
                     type="text"
+                    value={info.state || ""}
                     onChange={(event) => handleOnChange(event, "state")}
                   />
                 </FormGroup>
@@ -128,6 +134,22 @@ class CvForm extends React.Component {
                     }
                   </Col>
                 </Row>
+              </Col>
+            </Row>
+            <hr></hr>
+            <Row className="justify-content-center">
+              <Col>
+                <Button 
+                  className="w-100 mb-1" 
+                  variant="primary" 
+                  onClick={this.props.loadExample}> 
+                  Load Example</Button>
+                <Button 
+                  className="w-100 mb-1" 
+                  variant="danger"
+                  onClick={this.props.resetState}
+                  >
+                  Reset</Button>
               </Col>
             </Row>
           </Form>

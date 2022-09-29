@@ -30,6 +30,8 @@ class App extends React.Component {
     this.handleOnChange = this.handleOnChange.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.removeEducation = this.removeEducation.bind(this);
+    this.loadExample = this.loadExample.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
   // Add or update a work experience
@@ -87,12 +89,54 @@ class App extends React.Component {
     });
   }
 
+  // Loads an example CV
+  loadExample() {
+    const workExp = [
+      new WorkExp("Intern", "January 2022", "July 2022", "Company A", "São Paulo, Brazil"),
+      new WorkExp("Software Developer Jr.", "June 2022", "Present", "Company B", "São Paulo, Brazil")
+    ];
+    const education = [
+      new Education("USP", "2019", "2024", "Software Engineering Bachelors Degree", "São Paulo, Brazil")
+    ];
+    this.setState({
+      firstName: "Alex",
+      lastName: "Campos",
+      email: "alex.example@outlook.com",
+      phoneNumber: "(00)0987-7654",
+      city: "São Paulo",
+      state: "SP",
+      workExp: workExp,
+      education: education,
+    });
+  }
+
+  // Reset all states to empty
+  resetState() {
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      city: "",
+      state: "",
+      workExp: [ new WorkExp() ],
+      education: [ new Education() ],
+    });
+  }
+
   render() {
+    const info = {
+      firstName: this.state.firstName, lastName: this.state.lastName,
+      email: this.state.email, phoneNumber: this.state.phoneNumber, city: this.state.city,
+      state: this.state.state
+    }
+
     return (
       <Container className="cv-container">
         <Row>
           <Col lg="5" className="cv-form mb-3">
             <CvForm
+              info={info}
               handleOnChange={this.handleOnChange}
               addWorkExp={this.addWorkExp}
               removeWorkExp={this.removeWorkExp}
@@ -100,11 +144,14 @@ class App extends React.Component {
               addEducation={this.addEducation}
               removeEducation={this.removeEducation}
               education={this.state.education}
+              loadExample={this.loadExample}
+              resetState={this.resetState}
             />
           </Col>
           <Col lg="7" className="cv-preview">
             <div className="sticky-top" >
               <CvPreview
+                info={{ city: this.state.city, }}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
                 email={this.state.email}
